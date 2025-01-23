@@ -7,7 +7,7 @@ Este proyecto consiste en la creación de una base de datos para gestionar la in
 El repositorio está organizado de la siguiente manera:
 
 - **notebooks/**: Contiene notebooks de Jupyter que documentan el análisis de datos y la preparación de los scripts de carga.
-- **data/**: Almacena los datos en formato CSV utilizados para alimentar la base de datos.
+- **diagramas/**: Imagenes de los diagramas sobre como se estructura la BBDD.
 - **main.py**: Script principal que ejecuta la creación y carga de datos en la base de datos.
 - **utils.py**: Archivo con funciones auxiliares como conexión a la base de datos, validación de datos, etc.
 - **queries**: Contiene consultas SQL de ejemplo para verificar y explorar la base de datos.
