@@ -1,5 +1,6 @@
 from utils import *
 
+# Conexión a la base de datos
 connection = psycopg2.connect(
         host=db_host,       
         database=db_name,        
@@ -144,6 +145,7 @@ for c in df_c:
 # Hacer commit después del bucle
 connection.commit()
 
+# Inserción de  la tabla de alumnos
 for index, row in df.iterrows():
     cursor.execute('''
     INSERT INTO profesor(nombre, apellido, fecha_nac, rol, email, campusid)
@@ -159,6 +161,7 @@ for index, row in df.iterrows():
 
 connection.commit()
 
+# Inserción de las distintas modalidades
 cursor.execute("INSERT INTO modalidad (dedicacion, tipo) VALUES ('FT', 'Presencial')")
 cursor.execute("INSERT INTO modalidad (dedicacion, tipo) VALUES ('FT', 'Online')")
 cursor.execute("INSERT INTO modalidad (dedicacion, tipo) VALUES ('PT', 'Presencial')")
@@ -169,12 +172,14 @@ cursor.execute("INSERT INTO modalidad (dedicacion, tipo) VALUES ('Hibrido', 'Onl
 connection.commit()
 
 
+# Inserción de las promociones
 cursor.execute("INSERT INTO promocion (nombre, fecha_inicio, fecha_fin) VALUES ('Febrero', '2024-02-12', '2024-05-31')")
 cursor.execute("INSERT INTO promocion (nombre, fecha_inicio, fecha_fin) VALUES ('Septiembre', '2023-09-18', '2023-12-22')")
     
 connection.commit()
 
 
+# Inserción de la tabla de bootcamps
 consultas = [6,3,3,4,5,5]
 
 for i in consultas:
@@ -190,6 +195,7 @@ for i in consultas:
 
 connection.commit()
 
+# Inserción de la tabla de la tabla de alumnos
 fechas = ['1985-03-17', '1987-11-05', '1992-04-28', '1995-09-12', '1988-02-29',
           '1998-07-15', '2001-12-31', '1990-06-20', '1989-01-01', '1994-08-18',
           '1997-05-23', '2003-02-14', '1986-10-31', '1991-03-07', '1999-11-25',
@@ -212,7 +218,7 @@ for index, row in df.iterrows():
 
 connection.commit()
 
-
+# Inserción de la tabla de calificaciones
 for index, row in df_c.iterrows():
     cursor.execute('''
     INSERT INTO calificacion(resultado, proyectoid, alumnoid)
@@ -225,6 +231,7 @@ for index, row in df_c.iterrows():
     
 connection.commit()
 
+# Inserción de la tabla intermedia de profe_curso
 cursor.execute("INSERT INTO profe_curso (profesorid, bootcampid) VALUES (8, 1)")
 cursor.execute("INSERT INTO profe_curso (profesorid, bootcampid) VALUES (4, 1)")
 cursor.execute("INSERT INTO profe_curso (profesorid, bootcampid) VALUES (1, 2)")
